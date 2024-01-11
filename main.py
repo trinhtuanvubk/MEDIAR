@@ -89,6 +89,9 @@ def main(args):
 
     # Upload model to wandb server
     model_path = os.path.join(wandb.run.dir, "model.pth")
+    print(model_path)
+    # model_path = "./ckpt"
+    # os.makedirs(model_path, exist_ok=True)
     torch.save(trainer.model.state_dict(), model_path)
     wandb.save(model_path)
 

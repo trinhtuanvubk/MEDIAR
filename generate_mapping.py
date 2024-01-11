@@ -12,13 +12,13 @@ def public_paths_labeled(root):
     data_dicts = []
 
     for image_path, label_path in zip(images_raw, labels_raw):
-        name1 = image_path.split("/")[-1].split(".")[0]
-        name2 = label_path.split("/")[-1].split("_label")[0]
+        name1 = image_path.split("/")[-1].split("_")[0]
+        name2 = label_path.split("/")[-1].split("_")[0]
         assert name1 == name2
 
         data_item = {
-            "img": image_path.split("CellSeg/")[-1],
-            "label": label_path.split("CellSeg/")[-1],
+            "img": image_path.split("Datasets/")[-1],
+            "label": label_path.split("Datasets/")[-1],
         }
 
         data_dicts.append(data_item)

@@ -50,6 +50,10 @@ class BasePredictor:
 
             pred_mask = self._inference(img_data)
             pred_mask = self._post_process(pred_mask.squeeze(0).cpu().numpy())
+            import cv2
+            print(pred_mask[pred_mask>0])
+            print(pred_mask.shape)
+            cv2.imwrite("cv_mask.jpg", np.array(pred_mask, dtype=np.float32))
             self.write_pred_mask(
                 pred_mask, self.output_path, img_name, self.make_submission
             )
