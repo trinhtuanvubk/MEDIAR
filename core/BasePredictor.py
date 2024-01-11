@@ -110,12 +110,38 @@ class BasePredictor:
 
         self.img_names = sorted(os.listdir(self.input_path))
 
+    # def _get_img_data(self, img_name):
+    #     img_path = os.path.join(self.input_path, img_name)
+    #     img_data = self.pred_transforms(img_path)
+    #     print(img_data.shape)
+    #     save_image = img_data.permute(1,2,0).numpy()
+
+    #     print(save_image.shape)
+    #     import cv2
+    #     cv2.imwrite("after_monai.jpg", save_image)
+    #     img_data = img_data.unsqueeze(0)
+
+    #     return img_data
+    
+    
     def _get_img_data(self, img_name):
+        import cv2
         img_path = os.path.join(self.input_path, img_name)
-        img_data = self.pred_transforms(img_path)
+        img_data = cv2.imread(img_path)
+        cv2.imwrite("after_monai.jpg", img_data)
+        img_data = torch.Tensor(img_data)
+        img_data = img_data.permute(2,0,1)
+        # img_data = self.pred_transforms(img_path)
+        # print(img_data.shape)
+        # save_image = img_data.permute(1,2,0).numpy()
+
+        # print(save_image.shape)
+        # import cv2
+        # cv2.imwrite("after_monai.jpg", save_image)
         img_data = img_data.unsqueeze(0)
 
         return img_data
+    
 
     def _inference(self, img_data):
         raise NotImplementedError

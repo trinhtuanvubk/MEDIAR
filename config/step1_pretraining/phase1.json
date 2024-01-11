@@ -1,10 +1,10 @@
 {
     "data_setups":{
         "labeled":{
-            "root": "/home/gihun/data/CellSeg/",
+            "root": "/home/aittgp/vutt/workspace/subsurface_challenge/MEDIAR/Datasets",
             "mapping_file": "./train_tools/data_utils/mapping_public.json",
-            "mapping_file_tuning": "/home/gihun/CellSeg/train_tools/data_utils/mapping_tuning.json",
-            "batch_size": 9, 
+            "mapping_file_tuning": "/home/aittgp/vutt/workspace/subsurface_challenge/MEDIAR/train_tools/data_utils/mapping_tuning.json",
+            "batch_size": 8, 
             "valid_portion": 0
         },
         "public":{
@@ -23,7 +23,7 @@
         "trainer": {
             "name": "mediar",
             "params": {            
-                "num_epochs": 80,
+                "num_epochs": 21,
                 "valid_frequency": 10,
                 "device": "cuda:0",
                 "amp": true,
@@ -43,7 +43,7 @@
         "seed": 19940817
     },
     "pred_setups":{
-        "input_path":"/home/gihun/data/CellSeg/Official/TuningSet",
+        "input_path":"/home/aittgp/vutt/workspace/subsurface_challenge/MEDIAR/Datasets/",
         "output_path": "./mediar_pretrained_phase1",
         "make_submission": false
     },
